@@ -260,7 +260,7 @@ export default {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    height: calc(var(--header-height)+ 1rem);
+    height: auto;
   }
   .headerText{
     font-size: 30px;
