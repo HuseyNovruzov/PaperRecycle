@@ -10,6 +10,7 @@
           </router-link>
         </div>
     </header>
+    <section class="middle">
       <section class="textSection">
         <div class="headerText">
           <h1>Daha yaxşı təbiət üçün!</h1>
@@ -52,6 +53,7 @@
         </div>
       </div>
     </div>
+    </section>
   </div>
 </template>
 <script>
@@ -84,7 +86,7 @@ export default {
 .header{
   width: 100%;
   height: var(--header-height); 
-  padding: 20px 10px;
+  padding: 1.5rem 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -96,7 +98,12 @@ export default {
   z-index: var(--z-fixed);
   transition: .5s;
 }
-
+.register{
+  width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 .loginBtn{
   width: var(--home-loginbtn-width);
   border: 1px solid var(--green-scale-color);
@@ -105,13 +112,16 @@ export default {
   padding: 6px 7px;
   font-weight: bold;
   border-radius: 5px;
-  margin-right: var(--mg-unit);
 }
 .loginBtn:hover{
   background: var(--green-scale-color);
   color: var(--white-text-color);
 }
+
 /* ---- First section ----- */
+.middle{
+  margin-top: var(--mg-top);
+}
 .textSection{
   width: 100%;
   display: flex;
@@ -120,7 +130,6 @@ export default {
   align-items: center;
   height: var(--home-textsection-height);
   text-align: center;
-  /* border: 1px solid; */
 }
 
 .headerText{
@@ -228,7 +237,6 @@ export default {
 @media only screen and (max-width: 600px){
   .headerText{
     font-size: 2rem;
-    margin-top: 1rem;
   }
   .context{
     font-size: 1rem;
@@ -276,7 +284,7 @@ export default {
     margin-bottom: var(--mg-unit);
   }
   .textSection{
-    margin-top: calc(var(--mg-unit) * 5);
+    margin-top: calc(var(--mg-unit) * 4);
   }
 }
 

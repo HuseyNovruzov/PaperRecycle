@@ -5,7 +5,7 @@
     </div>
     <main v-if="!loading">
         <head-section v-on:handleNavbar="show" v-if="getPathName()"></head-section>
-        <div class="middle" :class="toggleMenu ? 'body-pd' : ''">
+        <div :class="toggleMenu ? 'body-pd' : ''">
           <router-view></router-view> 
         </div>
     </main>
