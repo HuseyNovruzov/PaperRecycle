@@ -121,7 +121,6 @@ main{
   padding: 0 1rem;
   font-family: var(--body-font-first);
   font-family: var(--body-font-second);
-  
   transition: .5s;
 }
 a{

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <header class="header">
+        <header class="headerComponent">
             <div class="header__toggle">
                 <img src="../assets/openmenu.svg" alt="toggle" @click="showNavbar" :class="toggleMenu ? 'body-pd':''">
             </div>
@@ -56,25 +56,26 @@ export default {
 </script>
 
 
-<style scoped>
-.header{
+<style scope>
+.headerComponent{
   width: 100%;
-  height: var(--header-height);
-  padding: 1rem;
   position: fixed;
   top: 0;
   left: 0;
+  padding: 5px 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; 
   background-color: var(--header-color);
   box-shadow: 0 2px 2px 2px rgb(0,0,0,.2);
   z-index: var(--z-fixed);
-  transition: .5s;
+  transition: .5s; 
 }
 
 .header__toggle{
   cursor: pointer;
+  display: flex;
+  margin-left: var(--nav-width);
 }
 
 /* ------ NAV ------ */
@@ -115,12 +116,19 @@ export default {
   transition: .5s;
 }
 
+@media only screen and (max-width: 767px){
+  .header__toggle{
+    margin-left: .5rem;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   
   .header{
     height: calc(var(--header-height) + 1rem);
     padding: 0 0 0 calc(var(--nav-width) + 1rem);
   }
+
   .l-navbar{
     left: 0;
   }

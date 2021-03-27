@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="homePageContainer">
       <header class="header">
         <div class="register">
           <router-link to="/login">
@@ -25,7 +25,7 @@
       <section class="informBox">
         <h1 class="headerText">Nə etmək lazımdır?</h1>
         <span class="line"></span>
-    </section>
+      </section>
     <div class="cards">
       <div class="card1">
         <div class="textBox">
@@ -52,7 +52,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 <script>
@@ -76,13 +75,16 @@ export default {
 }
 </script>
 
-<style>
-
+<style scope>
+.homePageContainer{
+  display: flex;
+  flex-direction: column;
+}
 /* ----- Header ----- */
 .header{
   width: 100%;
   height: var(--header-height); 
-  padding: 1.5rem;
+  padding: 20px 10px;
   position: fixed;
   top: 0;
   left: 0;
@@ -118,6 +120,7 @@ export default {
   align-items: center;
   height: var(--home-textsection-height);
   text-align: center;
+  /* border: 1px solid; */
 }
 
 .headerText{
@@ -225,6 +228,7 @@ export default {
 @media only screen and (max-width: 600px){
   .headerText{
     font-size: 2rem;
+    margin-top: 1rem;
   }
   .context{
     font-size: 1rem;
@@ -246,9 +250,9 @@ export default {
   .header{
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     align-items: center;
-    height: calc(var(--header-height)+ 20px);
+    flex-wrap: wrap;
+    height: calc(var(--header-height)+ 1rem);
   }
   .headerText{
     font-size: 30px;
@@ -269,14 +273,12 @@ export default {
     order: 2;
   }
   .register *{
-    margin-bottom: calc(var(--mg-unit)/2);
+    margin-bottom: var(--mg-unit);
+  }
+  .textSection{
+    margin-top: calc(var(--mg-unit) * 5);
   }
 }
 
-@media only screen and (max-width: 260px) {
-  .textSection{
-    margin-top: calc(var(--mg-unit) * 4.5);
-  }
-}
 
 </style>
