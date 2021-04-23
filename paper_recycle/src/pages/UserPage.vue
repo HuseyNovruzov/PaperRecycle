@@ -1,14 +1,8 @@
 <template>
     <div class="userContainer">
-        <div class="userProfile">
-            <h2>{{ getUserName() }}</h2>
-            <a href="#">
-                <img src="../assets/logout.svg" alt="heasbdan cix" title="Hesabdan cixis">
-            </a>
-        </div>
         <section class="showBonuses">
             <div class="countBonus">
-                Aktiv bonus: {{ bonus }}
+                 Bonus sayi: {{ bonus }}
             </div>
         </section>
         <section class="bonusBox">
@@ -45,16 +39,14 @@
 </template>
 
 <script>
-
 export default {
     name: 'Userpage',
     data(){
         return{
-            username: '',
             gram: null,
-            date: '',
+            date: null,
             bonus: 40,
-            booksBonus: [40, 23, 56, 90],
+            booksBonus: [40, 23, 120, 90],
             books: [{ name: "Daniel Goleman", bonus: 34}, { name: "Mark Levi ", bonus: 42},{ name: "Danielee", bonus: 54}, {name:'', bonus: 32}]
         }
     },
@@ -75,27 +67,18 @@ export default {
             },
 
             checkAndSend(){
-                if(this.date.length && this.gram!=null){
+                if(this.date.length && this.gram){
                     const dateArr = this.date.split('-');
                     const year = dateArr[0];
                     const month = dateArr[1];
                     const day = dateArr[2];
                     localStorage.setItem("date",`${year} - ${month} - ${day}`);
                     localStorage.setItem("gram", this.gram);
+                    const info = {"gram": this.gram, "date": this.date }
+                    console.log(info)
                 }  
             },
-
-            getUserName(){
-                this.username = localStorage.getItem("username");
-                if(this.username != null){
-                    return this.username;
-                }
-                else{
-                    return '';
-                }
-
-            }
-            
+                        
         }
     }
 </script>
@@ -105,25 +88,19 @@ export default {
 .userContainer{
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
-}
-.userProfile{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: var(--mg-top);
+    /* padding: 0 .6rem; */
 }
 .showBonuses{
-    margin-top: calc(var(--mg-top) + 1rem);
     display: flex;
+    margin-top: var(--mg-top);
+    padding: 0 .8rem;
 }
 .countBonus{
     display: flex;
-    padding: 5px 10px;
-    border-radius: 10px;
+    border-radius: 7px;
+    padding: 5px 7px;
     border: 1px solid var(--white-scale-9-border-color);
     background: var(--white-scale-8-bg-color);
-    display: flex;
     justify-content: center;
     align-items: center;
     color: var(--blue-scale-color);
@@ -133,6 +110,7 @@ export default {
     margin-top: var(--mg-top);
     display: flex;
     justify-content: space-between;
+    padding: 0 .8rem;
 }
 .addBonusForm{
     width: var(--bonusform-width);
@@ -160,13 +138,19 @@ export default {
     margin-top: var(--mg-top);
     border-radius: 5px;
 }
+.submitBtn:disabled{
+    filter: brightness(60%);
+    cursor: not-allowed;
+}
 input:focus{
     box-shadow: 0 0 3px 1px var(--blue-scale-color);
 }
 .booksContainer{
     display: flex;
-    margin-top: calc(var(--mg-unit) + 1rem);
+    margin-top: calc(var(--mg-top) + 1rem);
     flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 .8rem;
 }
 
 .bookCard{
@@ -176,7 +160,6 @@ input:focus{
     display: flex;
     flex-direction: column;
     margin-bottom: var(--mg-unit);
-    margin-left: var(--mg-unit);
 }
 
 .imageBox{
@@ -206,13 +189,18 @@ input:focus{
 }
 
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 900px){
     .addBonusForm{
         width: 100%;
     }
     .booksContainer{
         justify-content: center;
     }
+    .bookCard{
+        margin-left: var(--mg-unit);
+    }
+}
+@media only screen and (max-width: 430px) {
     .bookCard{
         margin-left: 0;
     }

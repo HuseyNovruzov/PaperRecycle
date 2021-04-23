@@ -21,6 +21,7 @@ export default {
     border: 1px solid var(--white-scale-9-border-color);
     border-radius: 5px;
     text-align: center;
+    font-size: var(--label-font-size);
 }
 .createAccount a{
     color: var(--blue-scale-color);

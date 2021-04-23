@@ -17,6 +17,11 @@
 
 export default {
     name: 'Resetpassword',
+    date(){
+        return{
+            email: null
+        }
+    }
 
 }
 
@@ -24,8 +29,9 @@ export default {
 
 <style scoped>
 .resetPasswordBox{
+    height: 40vh;
+    margin: var(--mg-top) 0 var(--mg-unit) 0;
     display: flex;
-    height: var(--signup-container-height);
     justify-content: center;
     align-items: center;
     box-sizing: border-box;

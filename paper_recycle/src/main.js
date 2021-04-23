@@ -1,14 +1,20 @@
 import Vue from 'vue'
+
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
+
+
+
+
 import App from './App'
-import Home from './components/Home'
-import SignUp from './components/SignUp'
-import UserPage from './components/UserPage'
-import ResetPassword from './components/ResetPassword'
-import Notification from './components/Notification'
-import Settings from './components/Settings'
-import LoginPage from './components/LoginPage'
+import Home from './pages/Home'
+import SignUp from './pages/SignUp'
+import LoginPage from './pages/LoginPage'
+import UserPage from './pages/UserPage'
+import ResetPassword from './pages/ResetPassword'
+import Notification from './pages/Notification'
+import Settings from './pages/Settings'
+
 
 const router = new VueRouter({
   routes: [

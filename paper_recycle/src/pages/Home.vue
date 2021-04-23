@@ -1,14 +1,34 @@
 <template>
   <div class="homePageContainer">
-      <header class="header">
-        <div class="register">
+    <div class="toggleBox" v-if="!toggleMenu" @click="toggleNavbar">
+      <img src="../assets/openmenu.svg" alt="">
+    </div>
+    <nav class="responsive-navbar" v-show="toggleMenu">
+        <div class="closeBtn-box" @click="toggleNavbar">
+            <img src="../assets/openmenu.svg" alt="">
+        </div>
+        <div class="responsive-logo-box">Logo</div>
+        <div class="responsive-button-box">
           <router-link to="/login">
-            <input type="button" class="loginBtn" value="Daxil ol">
+            <input type="button" value="Daxil ol" class="responsive-loginBtn" @click="hideNavbar"/>
           </router-link>
           <router-link to="/register">
-            <input type="button" class="loginBtn" value="Qeydiyyat">
+            <input type="button" value="Qeydiyyat" class="responsive-registerBtn" @click="hideNavbar"/>
           </router-link>
         </div>
+    </nav>
+    <header class="home-header">
+      <div class="logo-box">
+       <img src="../assets/logo.svg" alt="">
+      </div>
+      <div class="button-box">
+        <router-link to="/login">
+          <input type="button" value="Daxil ol" class="loginBtn" />
+        </router-link>
+        <router-link to="/register">
+          <input type="button" value="Qeydiyyat" class="registerBtn" />
+        </router-link>
+      </div>
     </header>
     <section class="middle">
       <section class="textSection">
@@ -57,22 +77,30 @@
   </div>
 </template>
 <script>
+
 export default {
   data(){
     return{
       toggleMenu: false,
     }
   },
+  
   methods: {
-    showNavbar(){
-      if(this.toggleMenu == false){
-        this.toggleMenu = true
+    
+    toggleNavbar(){
+      if(!this.toggleMenu){
+        this.toggleMenu = true;
+        document.body.classList.add('bd-block');
       }
       else{
         this.toggleMenu = false
+        document.body.classList.remove('bd-block');
       }
+    },
+    hideNavbar(){
+      document.body.classList.remove('bd-block');
     }
-  }
+  },
   
 }
 </script>
@@ -82,42 +110,122 @@ export default {
   display: flex;
   flex-direction: column;
 }
-/* ----- Header ----- */
-.header{
-  width: 100%;
-  height: var(--header-height); 
-  padding: 1.5rem 0;
+
+/* Toggle */
+.toggleBox{
+  position: fixed;
+  right: 5px;
+  top: 5px;
+  background: var(--header-color);
+  box-shadow: 0 0 3px var(--gray-scale-color);
+  width: 35px;
+  height: 35px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px 8px 12px 8px;
+  cursor: pointer;
+}
+/* ----- Responsive navbar ----- */
+.responsive-navbar{
   position: fixed;
   top: 0;
-  left: 0;
+  height: 100vh;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  background-color: var(--header-color);
-  box-shadow: 0 2px 2px 2px rgb(0,0,0,.2);
-  z-index: var(--z-fixed);
-  transition: .5s;
+  justify-content: center;
+  background: var(--black-text-color);
 }
-.register{
-  width: 250px;
+.closeBtn-box{
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  width: 35px;
+  height: 35px;
+  background: var(--header-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px 8px 12px 8px;
+  cursor: pointer;
+}
+.responsive-logo-box{
+  margin-top: calc(var(--mg-unit) + 1rem);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.responsive-button-box{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: calc(var(--mg-unit) + 2rem);
+}
+.responsive-registerBtn{
+  margin-left: var(--mg-unit);
+}
+.responsive-loginBtn, .responsive-registerBtn{
+  color: var(--blue-scale-color);
+  background: transparent;
+  border: 1px solid var(--white-text-color);
+}
+.responsive-registerBtn:hover, .responsive-loginBtn:hover{
+  background: var(--blue-scale-color);
+  color: var(--white-text-color);
+}
+.bd-block{
+  overflow: hidden;
+}
+/* ----- Header ----- */
+.home-header{
+  position: sticky;
+  top: 0;
+  background: var(--header-color);
+  box-shadow: 0 0 3px var(--gray-scale-color) ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .4rem 1rem;
+}
+.logo-box{
+  width: 200px;
+}
+.logo-box img{
+  width: 100%;
+  height: 40px;
+}
+.button-box{
+  width: 170px;
+  display: flex;
+  justify-content: space-between;
+}
+.button-box input[type=button], .responsive-button-box input[type=button]{  
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
 }
 .loginBtn{
-  width: var(--home-loginbtn-width);
   border: 1px solid var(--green-scale-color);
-  background: transparent;
   color: var(--green-scale-color);
-  padding: 6px 7px;
-  font-weight: bold;
-  border-radius: 5px;
+  background: transparent;
+}
+.registerBtn{
+  border: 1px solid var(--green-scale-color);
+  color: var(--white-text-color);
+  background: var(--green-scale-color);
 }
 .loginBtn:hover{
   background: var(--green-scale-color);
   color: var(--white-text-color);
 }
-
+.registerBtn:hover{
+  background: var(--green-strong-scale-color);
+}
 /* ---- First section ----- */
 .middle{
   margin-top: var(--mg-top);
@@ -146,7 +254,7 @@ export default {
 }
 
 
-/* ------ Second Part ------ */
+/* ------ Second Section ------ */
 .informBox{
   width: 100%;
   display: flex;
@@ -185,11 +293,12 @@ export default {
   text-align: left;
   justify-content: center;
 }
+
 .textBox h2{
   margin-bottom: var(--mg-bottom);
-  color: var(--black-text-color);
   font-weight: var(--font-weight-700);
   font-size: var(--context-font-size);
+  color: var(--blue-scale-color);
 }
 .textBox p{
   color: var(--black-text-color);
@@ -224,7 +333,14 @@ export default {
 .card2 > .cardImageBox{
   order: 1;
 }
-
+@media only screen and (min-width: 600px){
+  .responsive-navbar{
+    display: none;
+  }
+  .bd-block{
+    overflow: auto;
+  }
+}
 @media only screen and (max-width: 1021px){
    .card2> .textBox{
     order: 1;
@@ -235,6 +351,12 @@ export default {
 }
 
 @media only screen and (max-width: 600px){
+  .home-header{
+    display: none;
+  }
+  .toggleBox{
+    display: flex;
+  }
   .headerText{
     font-size: 2rem;
   }
@@ -255,13 +377,7 @@ export default {
   }
 }
 @media only screen and (max-width: 400px){
-  .header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    height: auto;
-  }
+  
   .headerText{
     font-size: 30px;
   }
@@ -280,9 +396,7 @@ export default {
   .card2> .cardImageBox{
     order: 2;
   }
-  .register *{
-    margin-bottom: var(--mg-unit);
-  }
+  
   .textSection{
     margin-top: calc(var(--mg-unit) * 4);
   }

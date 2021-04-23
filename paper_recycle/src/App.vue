@@ -3,20 +3,19 @@
     <div class="load" v-if="loading">
       <hr/><hr/><hr/><hr/>
     </div>
-    <main v-if="!loading">
-        <head-section v-on:handleNavbar="show" v-if="getPathName()"></head-section>
-        <div :class="toggleMenu ? 'body-pd' : ''">
+
+          <HeadSection v-if="!getPathName()"></HeadSection>
           <router-view></router-view> 
-        </div>
-    </main>
+          <Footer></Footer>
   </div>
 </template>
 
 <script>
+import Footer from './components/Footer'
 import HeadSection from './components/HeadSection'
 export default {
   name: 'app',
-  components: { HeadSection },
+  components: { HeadSection, Footer },
   data(){
     return{
       toggleMenu: false,
@@ -31,16 +30,19 @@ export default {
 
     getPathName(){
       const path = window.location.pathname;
-      if(path === '/' || path === '/register' || path === '/login' || path==='/reset_password'){
-        return false;
+      const pathnames = ['/', '/register', '/login', '/reset_password'];
+      const isEqual = (pathname) => pathname === path;
+
+      if(pathnames.some(isEqual)){
+        return true;
       }
       else{
-        return true;
+        return false;
       }
     }
   },
   created(){
-     this.loading = false, 3000;
+     this.loading = false;
   }
   
 }
@@ -49,10 +51,6 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Noto+Sans+TC&display=swap');
 
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 /* ------ Variables CSS ------ */
 :root{
   /* ----- Height and Width ----- */
@@ -66,10 +64,7 @@ export default {
   --home-imagebox-width: 450px;
   --home-imagebox-height: 22em;
   /* ----- Register page ----- */
-  --signup-container-height: 70vh;
-  --loginbox-width: 300px;
-  --loginbox-height: 250px;
-  --signupbox-height: 360px;
+  --loginbox-width: 400px;
   --usercontainer-height: 100vh;
   /* ------ User Page ------ */
   --bonusform-width: 320px;
@@ -82,13 +77,14 @@ export default {
  --white-text-color: #faf9fc;
  --black-text-color: #212529;
  --green-scale-color: rgb(24, 212, 118);
+ --green-strong-scale-color: rgb(29, 173, 108);
  --red-scale-color: rgb(223, 61, 61);
  --gray-scale-color: rgb(210,210,210);
  --white-scale-8-bg-color: #f6f8fa;
  --white-scale-9-border-color: #e1e4e8;
  --bonusbox-border-color: #cccfd8;
 
- /* ------ Font ----- */
+ /* ------ Fonts ----- */
  --body-font-first: 'Inconsolata', monospace;
  --body-font-second: 'Noto Sans TC', sans-serif;
  --normal-font-size: 1rem;
@@ -98,7 +94,7 @@ export default {
  --warningtext-font-size: .8rem;
  --bookname-font-size: .8rem;
  --font-weight-700: 700;
- --font-weight-400: 400;
+ --font-weight-400: 400;  
  --header-font-size: 24px;
  
 
@@ -114,11 +110,18 @@ export default {
 *, ::before, ::after{
   box-sizing: border-box;
 }
-
-main{
+body{
+  margin: 0;
+}
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   position: relative;
-  margin: var(--header-height) 0 0 0;
-  padding: 0 1rem;
   font-family: var(--body-font-first);
   font-family: var(--body-font-second);
   transition: .5s;
@@ -128,10 +131,6 @@ a{
   outline: none;
 }
 
-.body-pd{
-  padding-left: calc(var(--nav-width) + 1rem);
-  transition: .5s;
-}
 
 /* ---- Pre loader */
 .load{
@@ -139,7 +138,6 @@ a{
   top:50%;
   left:50%;
   transform:translate(-50%, -50%);
-  /*change these sizes to fit into your project*/
   width:100px;
   height:100px;
 }
@@ -167,15 +165,15 @@ a{
 /* Login and Signup */
 .container{
     display: flex;
-    height: var(--signup-container-height);
     justify-content: center;
-    align-items: center;
 }
 
 .formBox{
-    width: 350px;
+    margin-top: calc(var(--mg-top) + 1rem);
+    width: var(--loginbox-width);
     display: flex;
     flex-direction: column;
+    margin-bottom: var(--mg-unit);
 }
 .form{
     padding: 10px;
@@ -215,23 +213,26 @@ a{
     color: var(--white-text-color);
     font-weight: var(--font-weight-700);
 }
-.btnBox input:hover{
-    filter: brightness(95%);
-}
 
-input:focus{
+input:focus:not(.success){
     box-shadow: 0 0 3px 1px var(--blue-scale-color);
 }
-
-@media only screen and (min-width: 768px) {
-  main{
-    margin: calc(var(--header-height) + 1rem) 0 0 0;
-    padding-left: calc(var(--nav-width) + 1rem);
-  }
-  
-  .body-pd{
-    padding-left: calc(var(--nav-width) + 90px);
-  }
+.conditions{
+    font-size: .7rem;
+    margin-top: .5rem;
+    margin-left: .5rem;
+}
+.success{
+    border: 1px solid var(--green-scale-color);
+    box-shadow: none;
+}
+.success-text{
+    color: var(--green-scale-color);
+}
+.error{
+    color: var(--red-scale-color);
+    font-size: .7rem;
+    margin: .2rem 0 0 .2rem;
 }
 
 </style>

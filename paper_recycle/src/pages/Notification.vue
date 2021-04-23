@@ -13,7 +13,7 @@
             <div class="removeBox">
                 <a href="#" @click="removeNotification(index)">Sil</a>
             </div>
-        </div>
+        </div>    
     </div>
 </template>
 
@@ -58,9 +58,12 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 70vh;
+    overflow: auto;
+    padding-bottom: 1rem;
 }
 .emptyBox{
-    height: 70vh;
+    min-height: inherit;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,7 +72,9 @@ export default {
 
 .notification{
     width: 550px;
-    border: 1px solid var(--white-scale-9-border-color);
+    /* border: 1px solid var(--white-scale-9-border-color); */
+    background: var(--header-color);
+    box-shadow: 1px 1px 4px rgba(0,0,0,.5);
     margin-top: var(--mg-top);
     border-radius: 5px;
     padding: 5px 10px;
@@ -93,7 +98,7 @@ export default {
 
 @media only screen and (max-width: 600px) {
     .notification{
-        width: 100%;
+        width: 90%;
     }
 }
 </style>

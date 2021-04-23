@@ -1,141 +1,206 @@
 <template>
-    <div>
-        <header class="headerComponent">
-            <div class="header__toggle">
-                <img src="../assets/openmenu.svg" alt="toggle" @click="showNavbar" :class="toggleMenu ? 'body-pd':''">
-            </div>
-        </header>
-  
-        <div id="nav-bar" class="l-navbar" :class="toggleMenu ? 'show' : ''">
-          <nav class="nav">
-              <div class="nav__list">
-              <router-link to="/user" class="nav__logo">
-                  <img src="../assets/profile.svg" alt="">
-                  <span class="nav__name">Profil</span>
-              </router-link>
-
-              <router-link to="/notifications" class="nav__logo">
-                  <img src="../assets/notification.svg" alt="">
-                  <span class="nav__name">Bildirisler</span>
-              </router-link>
-              
-              <router-link to="/settings" class="nav__logo">
-                  <img src="../assets/settings.svg" alt="">
-                  <span class="nav__name">Ayarlar</span>
-              </router-link>
-              </div>
-          </nav>
+  <div class="headerContainer">
+    <div class="userInfo">
+        <div class="profileImage">
+          <img src="../assets/profile.jpeg" alt="">
         </div>
+        <span class="username">{{ getUserName() }}</span>
     </div>
+    <header class="headerComponent">
+      <div></div>
+      <nav class="navigation">
+        <router-link class="nav-item" to="/user">Profil</router-link>
+        <router-link class="nav-item" to="/notifications">Bildirisler</router-link>
+        <router-link class="nav-item" to="/settings">Ayarlar</router-link>
+      </nav>
+      <div class="logout">
+        <a href="#">
+          <img src="../assets/logout.svg" alt="heasbdan cix" title="Hesabdan cixis">
+        </a>
+      </div>
+    </header>
+    <div class="openmenu" @click="toggleNavbar" v-if="!toggle">
+      <img src="../assets/openmenu.svg" alt="">
+    </div>
+    <nav class="responsive-header" v-show="toggle">
+      <div class="closemenu" @click="toggleNavbar">
+        <img src="../assets/openmenu.svg" alt="">
+      </div>
+      <nav class="responsive-navigation">
+        <router-link class="link-space" to="/user">
+          <input type="button" value="Profil" class="nav-btn" @click="hideNavbar">
+        </router-link>
+        <router-link class="link-space" to="/notifications">
+          <input type="button" value="Bildirisler" class="nav-btn" @click="hideNavbar">
+        </router-link>
+        <router-link class="link-space" to="/Settings">
+          <input type="button" value="Ayarlar" class="nav-btn" @click="hideNavbar">
+        </router-link>
+      </nav>
+      <div class="logout link-space">
+        <input type="button" value="Hesabdan cix" class="logoutBtn">
+      </div>
+    </nav>
+  </div>
 </template>
 
+
 <script>
-
-
 export default {
-    name: 'HeadSection',
-    data(){
-      return{
-        toggleMenu: false,
+  data(){
+    return{
+      username: null,
+      toggle: false,
+    }
+  },
+  methods: {
+    getUserName(){
+        this.username = localStorage.getItem("username");
+        if(this.username != null){
+            return this.username;
+            }
+    },
+    toggleNavbar(){
+      if(!this.toggle){
+        this.toggle = true;
+        document.body.classList.add("body-overflow");
+      }
+      else{
+        this.toggle = false;
+        document.body.classList.remove("body-overflow");
       }
     },
-    methods: {
-      showNavbar(){
-        if(this.toggleMenu == false){
-          this.toggleMenu = true
-        }
-        else{
-          this.toggleMenu = false
-        }
-
-        this.$emit("handleNavbar", this.toggleMenu);
-    },
-    
+    hideNavbar(){
+      document.body.classList.remove('body-overflow');
+      this.toggle = false;
     }
+  }
 }
 </script>
 
-
 <style scope>
+.headerContainer{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--gray-scale-color);
+}
 .headerComponent{
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 5px 0;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-between; 
-  background-color: var(--header-color);
-  box-shadow: 0 2px 2px 2px rgb(0,0,0,.2);
-  z-index: var(--z-fixed);
-  transition: .5s; 
+  height: 60px;
+  padding: 0 .7rem;
 }
-
-.header__toggle{
-  cursor: pointer;
+.userInfo{
+  height: 55px;
   display: flex;
-  margin-left: var(--nav-width);
+  justify-content: center;
+  align-items: center;
+  margin-left: calc(var(--mg-unit)/2);
 }
-
-/* ------ NAV ------ */
-.l-navbar{
+.profileImage{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.profileImage img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.navigation{
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+.nav-item{
+  color: var(--blue-scale-color);
+}
+.nav-btn{
+  color: var(--blue-scale-color);
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  font-size: var(--normal-font-size);
+}
+.nav-btn:hover{
+  cursor: pointer;
+  color: var(--gray-scale-color);
+}
+.nav-item:hover{
+  color: var(--gray-scale-color);
+}
+.logout{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* ----- Mobile navigation bar ----- */
+.responsive-header{
   position: fixed;
   top: 0;
-  left: -30%;
-  width: var(--nav-width);
-  height: 100vh;
-  background: var(--white-scale-8-bg-color);
-  padding: .5rem 1rem 0 0;
-  transition: .5s;
   z-index: var(--z-fixed);
-}
-.nav{
-  height: 100%;
   display: flex;
+  width: 100%;
+  height: 100vh;
+  background: var(--black-text-color);
   flex-direction: column;
   justify-content: center;
+}
+.username{
+  margin-left: 1rem;
+  color: var(--black-text-color);
+  font-weight: var(--font-weight-700);
+}
+.responsive-navigation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.link-space{
+  margin-top: var(--mg-top);
+}
+.logoutBtn{
+  outline: none;
+  padding: .5rem .8rem;
+  color: var(--blue-scale-color);
+  border: none;
+  cursor: pointer;
+}
+.openmenu, .closemenu{
+  display: none;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  background: var(--header-color);
+  box-shadow: 0 0 3px var(--gray-scale-color);
+  width: 35px;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px 8px 12px 8px;
+  cursor: pointer;
+  z-index: var(--z-fixed);
+}
+.body-overflow{
   overflow: hidden;
 }
-.nav__logo{
-  display: flex;
-  align-items: center;
-  column-gap: 1rem;
-  padding: .3rem 1.56rem;
-  position: relative;
-  color: var(--blue-scale-color);
-  margin-bottom: 1.5rem;
-  transition: .3s;
-}
-.nav__logo:hover{
-  color: #9099b1;
-}
-
-.show{
-  left: 0;
-  transition: .5s;
-}
-
-@media only screen and (max-width: 767px){
-  .header__toggle{
-    margin-left: .5rem;
+@media only screen and (min-width: 600px){
+  .responsive-header{
+    display: none;
+  }
+  .body-overflow{
+    overflow: auto;
   }
 }
-
-@media only screen and (min-width: 768px) {
-  
-  .header{
-    height: calc(var(--header-height) + 1rem);
-    padding: 0 0 0 calc(var(--nav-width) + 1rem);
+@media only screen and (max-width: 600px){
+  .headerComponent{
+    display: none;
   }
-
-  .l-navbar{
-    left: 0;
+  .openmenu,.closemenu{
+    display: flex;
   }
- 
-  .show{
-    width: calc(var(--nav-width) + 156px);
-  } 
 }
-
 </style>
