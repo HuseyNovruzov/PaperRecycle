@@ -2,7 +2,7 @@
     <div class="userContainer">
         <section class="showBonuses">
             <div class="countBonus">
-                 Bonus sayi: {{ bonus }}
+                 Bonus sayı: {{ bonus }}
             </div>
         </section>
         <section class="bonusBox">
@@ -10,27 +10,24 @@
                 <label for="gram" class="textLabel">Miqdari daxil edin</label>
                 <input type="number" id="gram" class="inp" min="1000" step="100" v-model="gram" required />
                 <div class="dateBox">
-                    <label for="date" class="textLabel setDateLabel">Vaxt secin</label>
+                    <label for="date" class="textLabel setDateLabel">Vaxt seçin</label>
                     <input type="date" id="date" class="inp" v-model="date" required />
                 </div>
                 <input type="submit" value="Tesdiqle" class="submitBtn" @click="checkAndSend">
             </form>
         </section>
         <section class="booksContainer">
-            <div class="bookCard" v-for="(book, index) in books" v-bind:key="index">
+             <div class="bookCard" v-for="(book, index) in books" v-bind:key="index">
                 <div class="imageBox">
                     <img src="../assets/book.jpg" alt="">
                 </div>
                 <div class="bookDescription">
                     <div class="bookText">
-                        <p>Muellif : {{ book.name }}</p>
-                        <p>Kitab adi : Emosional zeka</p>
+                        <p><span class="bold-text">Müəllif</span>  {{ book.name }}</p>
+                        <p><span class="bold-text">Kitab adı</span>  Emosional zeka</p>
                     </div>
-                    <div class="isAvailable" v-if="isAvailable(book.bonus)">
-                        <a href="#">Sec</a> 
-                    </div>
-                    <div class="notAvailable" v-if="!isAvailable(book.bonus)">
-                        <p class="redText">{{ book.bonus - bonus }} bonus catmir</p>
+                    <div class="isAvailable">
+                        <input type="button" value="Seç" :class="isAvailable(book.bonus) ? 'availableBook': 'disable'" :disabled="isAvailable(book.bonus) ? false : true">
                     </div>
                 </div>
             </div>
@@ -47,10 +44,11 @@ export default {
             date: null,
             bonus: 40,
             booksBonus: [40, 23, 120, 90],
-            books: [{ name: "Daniel Goleman", bonus: 34}, { name: "Mark Levi ", bonus: 42},{ name: "Danielee", bonus: 54}, {name:'', bonus: 32}]
+            books: [{ name: "Daniel Goleman", bonus: 34}, { name: "Mark Levi ", bonus: 42},{ name: "Danielee", bonus: 54}, {name:'Huseyn', bonus: 32}, {name: 'Murad', bonus: 40}]
         }
     },
-    
+    computed:{
+    },
     methods: {
             isAvailable(bookBonus){
                 if(this.bonus >= bookBonus){
@@ -84,7 +82,6 @@ export default {
 </script>
 
 <style scoped>
-
 .userContainer{
     display: flex;
     flex-direction: column;
@@ -138,71 +135,81 @@ export default {
     margin-top: var(--mg-top);
     border-radius: 5px;
 }
-.submitBtn:disabled{
-    filter: brightness(60%);
-    cursor: not-allowed;
-}
+
 input:focus{
     box-shadow: 0 0 3px 1px var(--blue-scale-color);
 }
 .booksContainer{
-    display: flex;
-    margin-top: calc(var(--mg-top) + 1rem);
-    flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 .8rem;
+    margin-top: calc(var(--mg-top) + 1rem);
+    margin-bottom: 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: var(--green-scale-color) #fff;
+}
+
+*::-webkit-scrollbar-track{
+    background: #fff;
+}
+*::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background: var(--green-scale-color);
 }
 
 .bookCard{
+    display: inline-block;
     width: 200px;
-    border-radius: 5px;
-    border: 1px solid var(--white-scale-9-border-color);
-    display: flex;
-    flex-direction: column;
-    margin-bottom: var(--mg-unit);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, .2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: 1rem;
+    border: 1px solid var(--white-scale-8-bg-color);
 }
 
 .imageBox{
-    width: 100%;
-    border-radius: 5px 5px 0 0;
+    height: 200px;
 }
 .imageBox img{
     width: 100%;
-    border-radius: 5px 5px 0 0;
+    height: 100%;
+    object-fit: cover;
 }
 .bookDescription{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 5px 0;
+    font-family:Arial, Helvetica, sans-serif;
 }
 .bookText{
     font-size: var(--bookname-font-size);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 10px;
 }
-.isAvailable a{
-    color: var(--green-scale-color);
-    font-size: var(--label-font-size);
+.bold-text {
+    font-weight: var(--font-weight-700);
+    margin-right: .5rem;
 }
-.redText{
-    color: var(--red-scale-color);
-    font-size: var(--label-font-size);
+.isAvailable{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
 }
-
+.isAvailable input{
+    color: var(--white-scale-8-bg-color);
+    border: none;
+    width: 120px;
+    padding: 4px 0;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    outline: none;
+}
 
 @media only screen and (max-width: 900px){
     .addBonusForm{
         width: 100%;
     }
-    .booksContainer{
-        justify-content: center;
-    }
-    .bookCard{
-        margin-left: var(--mg-unit);
-    }
 }
-@media only screen and (max-width: 430px) {
-    .bookCard{
-        margin-left: 0;
-    }
-}
+
 </style>

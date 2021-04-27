@@ -2,15 +2,15 @@
     <footer class="footer">
         <div class="top-footer">
             <div class="contact">
-                <h2>Elaqe</h2>
+                <h2>Əlaqə</h2>
                 <p>kagiz.az.contact@gmail.com</p>
             </div>
             <div class="support">
-                <h2>Destek</h2>
-                <p>Yaranmis problemi destek komandasina bildirmek: kagiz.az.support@gmail.com</p>
+                <h2>Dəstək</h2>
+                <p>Yaranmış problemi dəstək komandasına bildirmək: kagiz.az.support@gmail.com</p>
             </div>
             <div class="social">
-                <h2>Bizi burada izleyin</h2>
+                <h2>Bizi burada izləyin</h2>
                 <div class="social-image">
                     <img src="../assets/social-media.svg" alt="">
                 </div>

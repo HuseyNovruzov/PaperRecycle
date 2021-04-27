@@ -80,6 +80,7 @@ export default {
  --green-strong-scale-color: rgb(29, 173, 108);
  --red-scale-color: rgb(223, 61, 61);
  --gray-scale-color: rgb(210,210,210);
+ --disable-button-color: #999;
  --white-scale-8-bg-color: #f6f8fa;
  --white-scale-9-border-color: #e1e4e8;
  --bonusbox-border-color: #cccfd8;
@@ -234,5 +235,16 @@ input:focus:not(.success){
     font-size: .7rem;
     margin: .2rem 0 0 .2rem;
 }
-
+.disable{
+  cursor: not-allowed;
+  background: var(--disable-button-color);
+}
+.submitBtnProp{
+  background: var(--green-scale-color);
+  cursor: pointer;
+}
+.availableBook{
+  background: var(--blue-scale-color);
+  cursor: pointer;
+}
 </style>

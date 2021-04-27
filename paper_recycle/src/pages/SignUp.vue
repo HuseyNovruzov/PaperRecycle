@@ -2,27 +2,27 @@
     <div class="container">
         <div class="formBox">
             <form class="form" autocomplete="off" method="" ref="inputs" @submit.prevent="checkFormValidity">
-                <label for="username" class="textLabel">Istifadeci adi</label>
+                <label for="username" class="textLabel">İstifadəçi adı</label>
                 <input type="text" class="inp" id="username" v-model="username" :class="usernameIsValid ? 'success': ''" />
                 <span class="error" v-if="!usernameIsValid" >{{ usernameErrorMessage }}</span>
                 <div class="inputBox">
-                    <label for="signup__email" class="textLabel">Email address</label>
+                    <label for="signup__email" class="textLabel">Email adres</label>
                     <input type="text" id="signup__email" class="inp" v-model="email" :class="emailIsValid ? 'success': ''" placeholder="numune@gmail.com" />
                     <span class="error">{{ emailErrorMessage }}</span>
                 </div>
 
                 <div class="inputBox">
-                    <label for="signup__password" class="textLabel">Yeni Sifre</label>
+                    <label for="signup__password" class="textLabel">Yeni şifre</label>
                     <div class="passwordValidateBox">
                         <input type="password" id="signup__password" class="inp" v-model="password" :class="passwordIsValid ? 'success': ''" spellcheck="false" autocomplete="off"  />
                     </div>
-                    <span class="conditions" :class="passwordContainLowerLetter ? 'success-text': ''">En az 1 kicik herf olmalidir</span>
-                    <span class="conditions" :class="passwordContainUpperLetter ? 'success-text': ''">En az bir boyuk herf olmalidir</span>
-                    <span class="conditions" :class="passwordContainDigit ? 'success-text': ''">En az bir reqem olmalidir</span>
-                    <span class="conditions" :class="validatePasswordLength ? 'success-text': ''">Sifre uzunlugu 8 ve ya daha cox olmalidir</span>
+                    <span class="conditions" :class="passwordContainLowerLetter ? 'success-text': ''">Ən az 1 kiçik hərf olmalıdır</span>
+                    <span class="conditions" :class="passwordContainUpperLetter ? 'success-text': ''">Ən az bir böyük hərf olmalıdır</span>
+                    <span class="conditions" :class="passwordContainDigit ? 'success-text': ''">Ən az bir rəqəm olmalıdır</span>
+                    <span class="conditions" :class="validatePasswordLength ? 'success-text': ''">Şifrə uzunluğu 8 və ya daha çox olmalıdır</span>
                 </div>
                 <div class="inputBox">
-                    <label for="confirm__password" class="textLabel">Sifreni tesdiqleyin</label>
+                    <label for="confirm__password" class="textLabel">Şifrəni təsdiqləyin</label>
                     <div class="passwordValidateBox">
                         <input type="password" id="confirm__password" v-model="confirm_password" :class="confirmPassword ? 'success': ''" class="inp" spellcheck="false" autocomplete="off" />
                     </div>
@@ -63,7 +63,7 @@ export default {
             if(this.username || this.username===null){
                 return ''
             }else{
-                return 'Istifadeci adi daxil edin';
+                return 'İstifadəçi adı daxil edin';
             }
         },
         emailIsValid(){
@@ -78,7 +78,7 @@ export default {
             }else{
                 const validEmail = this.checkEmail();
                 if(!validEmail){
-                   return 'Duzgun email unvani daxil edin';
+                   return 'Düzgün email ünvanı daxil edin';
                 }
                 else{
                     return '';

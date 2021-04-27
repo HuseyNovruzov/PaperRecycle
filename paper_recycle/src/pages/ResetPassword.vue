@@ -2,11 +2,11 @@
     <div class="resetPasswordBox">
         <div class="resetbox">
             <form action="" class="reset__password">
-                <label for="login_field" class="resetLabel">Qeydiyyatdan kecdiyiniz email addresinizi 
-                    daxil edin ve emaile sifreni yenileme linki gonderilecek</label>
+                <label for="login_field" class="resetLabel">Qeydiyyatdan keçdiyiniz email adresinizi 
+                    daxil edin və emailə şifrəni yeniləmə linki göndəriləcək</label>
                 <input type="email" class="resetInput" placeholder="Emaili daxil edin"/>
                 <div class="resetBtnBox">
-                    <input type="submit" value="Gonder" />
+                    <input type="submit" value="Gönder" />
                 </div>
             </form>
         </div>

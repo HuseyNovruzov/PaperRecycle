@@ -1,32 +1,32 @@
 <template>
     <div class="settingsContainer">
-        <h2>Sifreni yenile</h2>
+        <h2>Şifrəni yenilə</h2>
         <section class="resetPasswordContainer">
                 <form action="" class="resetPasswordForm" @submit.prevent="refreshPassword">
-                    <label for="former__password" class="resetPasswordLabel">Movcud sifreni daxil edin</label>
+                    <label for="former__password" class="resetPasswordLabel">Mövcud şifrəni daxil edin</label>
                     <input type="password" v-model="password" :class="currentPasswordIsValid ? 'success': 'generalBorder'">
                     <span class="error">{{ }}</span>
-                    <label for="new__password">Yeni sifreni daxil edin</label>
+                    <label for="new__password">Yeni şifrəni daxil edin</label>
                     <input type="password" v-model="new_password" :class="new_passwordIsValid ? 'success': 'generalBorder'" />
-                    <span class="conditions" :class="new_passwordContainLower ? 'success-text': ''">En az bir kicik herf olmalidir</span>
-                    <span class="conditions" :class="new_passwordContainUpper ? 'success-text': ''">En az bir boyuk herf olmalidir</span>
-                    <span class="conditions" :class="new_passwordContainDigit ? 'success-text': ''">En az bir reqem olmalidir</span>
-                    <span class="conditions" :class="new_passwordLength ? 'success-text': ''">Sifre uzunlugu 8 ve ya daha artiq olmalidir</span>
-                    <input type="submit" value="Deyis" class="submitBtn" :disabled="disableChangePasswordButton ? false : true" />
+                    <span class="conditions" :class="new_passwordContainLower ? 'success-text': ''">Ən az bir kiçik hərf olmalıdır</span>
+                    <span class="conditions" :class="new_passwordContainUpper ? 'success-text': ''">Ən az bir böyük hərf olmalıdır</span>
+                    <span class="conditions" :class="new_passwordContainDigit ? 'success-text': ''">Ən az bir rəqəm olmalıdır</span>
+                    <span class="conditions" :class="new_passwordLength ? 'success-text': ''">Şifrə uzunluğu 8 və ya daha artıq olmalıdır</span>
+                    <input type="submit" value="Deyis" class="submitBtn" :class="disableChangePasswordButton ? 'submitBtnProp': 'disable'" :disabled="disableChangePasswordButton ? false : true" />
                 </form> 
  
         </section>
-        <h2>Mekan melumatlari</h2>
+        <h2>Məkan məlumatları</h2>
         <section class="locationContainer">
             <form action="" class="locationForm" @submit.prevent="setLocation">
-                <label for="set__city">Seher secin</label>
+                <label for="set__city">Şəhər seçin</label>
                 <select name="" id="set__city" class="setCity generalBorder" v-model="city">
-                    <option value="Baki">Baki</option>
+                    <option value="Baki">Bakı</option>
                 </select>
-                <p class="warningText redText">Hal-hazirda ancaq baki seheri uzre fealiyyet gosteririk</p>
-                <label for="">Unvan daxil edin</label>
-                <input type="text" placeholder="Kagizlarin sizden tehvil alinacagi deqiq unvan" class="generalBorder" v-model="address">
-                <input type="submit" value="Yadda saxla" class="submitBtn" :disabled="disableSendLocationButton ? false: true" />
+                <p class="warningText redText">Hal-hazirda ancaq Bakı şəhəri üzrə fəaliyyət göstəririk</p>
+                <label for="">Ünvan daxil edin</label>
+                <input type="text" placeholder="Kağızların sizdən təhvil alinacağı dəqiq ünvan" class="generalBorder" v-model="address">
+                <input type="submit" value="Yadda saxla" class="submitBtn" :class="disableSendLocationButton ? 'submitBtnProp': 'disable'" :disabled="disableSendLocationButton ? false: true" />
             </form>
         </section>
     </div>
@@ -159,10 +159,6 @@ export default {
 </script>
 
 <style scoped>
-:disabled{
-    cursor: not-allowed;
-    filter: brightness(80%);
-}
 .settingsContainer{
     display: flex;
     flex-direction: column;
@@ -208,16 +204,13 @@ export default {
     color: var(--red-scale-color);
 }
 .submitBtn{
-    background: var(--green-scale-color);
     color: var(--white-text-color);
     font-weight: var(--font-weight-700);
     border: none;
     padding: 7px;
     width: 200px;
 }
-input[type=submit]:not(:disabled):hover{
-    filter: brightness(90%);
-}
+
 .resetPasswordForm:last-child, .locationForm:last-child{
     margin-bottom: var(--mg-unit);
 }

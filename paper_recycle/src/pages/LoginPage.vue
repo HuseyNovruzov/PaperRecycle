@@ -2,14 +2,14 @@
     <div class="container">
         <div class="formBox">
                 <form action="" class="form">
-                    <label for="login__email" class="textLabel">Email address</label>
+                    <label for="login__email" class="textLabel">Email adres</label>
                     <input type="email" class="inp" id="login__email" v-model="email" />
                     <div class="inputBox">
-                        <label for="login__password" class="textLabel">Sifre</label>
+                        <label for="login__password" class="textLabel">Şifrə</label>
                         <input type="password" id="login__password" class="inp" autocomplete="off" v-model="password" />
                     </div>
                     <label for="repair__password" class="repairPassword">
-                        <router-link to="reset_password" id="repair__password">Sifreni unutmusuz?</router-link>
+                        <router-link to="reset_password" id="repair__password">Şifrəni unutmusuz?</router-link>
                     </label>
                     <div class="btnBox">
                         <input type="submit" value="Daxil ol"/>

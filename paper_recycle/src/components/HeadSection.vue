@@ -1,21 +1,18 @@
 <template>
   <div class="headerContainer">
     <div class="userInfo">
-        <div class="profileImage">
-          <img src="../assets/profile.jpeg" alt="">
-        </div>
         <span class="username">{{ getUserName() }}</span>
     </div>
     <header class="headerComponent">
       <div></div>
       <nav class="navigation">
         <router-link class="nav-item" to="/user">Profil</router-link>
-        <router-link class="nav-item" to="/notifications">Bildirisler</router-link>
+        <router-link class="nav-item" to="/notifications">Bildirişlər</router-link>
         <router-link class="nav-item" to="/settings">Ayarlar</router-link>
       </nav>
       <div class="logout">
         <a href="#">
-          <img src="../assets/logout.svg" alt="heasbdan cix" title="Hesabdan cixis">
+          <img src="../assets/logout.svg" alt="Hesabdan çıx" title="Hesabdan cixis">
         </a>
       </div>
     </header>
@@ -31,14 +28,14 @@
           <input type="button" value="Profil" class="nav-btn" @click="hideNavbar">
         </router-link>
         <router-link class="link-space" to="/notifications">
-          <input type="button" value="Bildirisler" class="nav-btn" @click="hideNavbar">
+          <input type="button" value="Bildirişlər" class="nav-btn" @click="hideNavbar">
         </router-link>
         <router-link class="link-space" to="/Settings">
           <input type="button" value="Ayarlar" class="nav-btn" @click="hideNavbar">
         </router-link>
       </nav>
       <div class="logout link-space">
-        <input type="button" value="Hesabdan cix" class="logoutBtn">
+        <input type="button" value="Hesabdan çıx" class="logoutBtn">
       </div>
     </nav>
   </div>
@@ -89,26 +86,17 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: 50px;
   padding: 0 .7rem;
 }
 .userInfo{
-  height: 55px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: calc(var(--mg-unit)/2);
+  margin-left: var(--mg-unit);
 }
-.profileImage{
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-.profileImage img{
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
+
 .navigation{
   width: 40%;
   display: flex;
@@ -150,7 +138,6 @@ export default {
   justify-content: center;
 }
 .username{
-  margin-left: 1rem;
   color: var(--black-text-color);
   font-weight: var(--font-weight-700);
 }

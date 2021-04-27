@@ -1,7 +1,7 @@
 <template>
     <div class="notifications">
         <div class="emptyBox" v-if="!notifications.length">
-                <h1>Bildiris yoxdur</h1>
+                <h1>Bildiriş yoxdur</h1>
         </div>
         <div class="notification" v-for="(notification, index) in notifications" :key="index">
             <div class="messageHeader">
