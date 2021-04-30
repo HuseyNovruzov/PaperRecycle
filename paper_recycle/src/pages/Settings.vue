@@ -137,7 +137,6 @@ export default {
             const valid_new_password = this.new_passwordIsValid;
             if(valid_current_password && valid_new_password){
                 const refresh = {"new_password": this.new_password }
-                console.log(refresh)
                 return refresh;
             }else{
                 e.preventDefault();
@@ -148,7 +147,6 @@ export default {
             const address_bool = this.addressIsSelected;
             if(city_bool && address_bool){
                 const address_form = {"city": this.city, "address": this.address }
-                console.log(address_form)
                 return address_form;
             }else{
                 e.preventDefault();

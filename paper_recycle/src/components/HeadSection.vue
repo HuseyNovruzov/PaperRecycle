@@ -17,11 +17,11 @@
       </div>
     </header>
     <div class="openmenu" @click="toggleNavbar" v-if="!toggle">
-      <img src="../assets/openmenu.svg" alt="">
+      <img src="../assets/arrow_back.svg" alt="">
     </div>
     <nav class="responsive-header" v-show="toggle">
       <div class="closemenu" @click="toggleNavbar">
-        <img src="../assets/openmenu.svg" alt="">
+        <img src="../assets/close_btn.svg" alt="">
       </div>
       <nav class="responsive-navigation">
         <router-link class="link-space" to="/user">
@@ -163,8 +163,8 @@ export default {
   right: 5px;
   background: var(--header-color);
   box-shadow: 0 0 3px var(--gray-scale-color);
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   justify-content: center;
   align-items: center;
   border-radius: 12px 8px 12px 8px;

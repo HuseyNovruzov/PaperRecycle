@@ -6,15 +6,18 @@
             </div>
         </section>
         <section class="bonusBox">
-            <form action="" class="addBonusForm" method="">
+            <form action="" class="addBonusForm" method="" @submit.prevent="checkAndSend">
                 <label for="gram" class="textLabel">Miqdari daxil edin</label>
-                <input type="number" id="gram" class="inp" min="1000" step="100" v-model="gram" required />
+                <input type="number" id="gram" class="inp" step="100" v-model="gram" />
+                <span class="error" v-if="!isValidGram">1000 qramdan az daxil etmək olmur.</span>
                 <div class="dateBox">
                     <label for="date" class="textLabel setDateLabel">Vaxt seçin</label>
-                    <input type="date" id="date" class="inp" v-model="date" required />
+                    <input type="date" id="date" class="inp" v-model="date" />
+                    <span class="error" v-if="!isValidDate">Tarix seçin</span>
                 </div>
-                <input type="submit" value="Tesdiqle" class="submitBtn" @click="checkAndSend">
+                <input type="submit" value="Tesdiqle" class="submitBtn" :class="!isValidDate ? 'disable': 'submitBtnProp'" :disabled="!isValidDate ? true : false" >
             </form>
+
         </section>
         <section class="booksContainer">
              <div class="bookCard" v-for="(book, index) in books" v-bind:key="index">
@@ -48,6 +51,12 @@ export default {
         }
     },
     computed:{
+        isValidGram(){
+            return this.checkGramValidity();
+        },
+        isValidDate(){
+            return this.checkValidDate();
+        }
     },
     methods: {
             isAvailable(bookBonus){
@@ -64,8 +73,10 @@ export default {
                 return bonus;
             },
 
-            checkAndSend(){
-                if(this.date.length && this.gram){
+            checkAndSend(e){
+                const validate_gram = this.checkGramValidity();
+                const valid_date = this.checkValidDate();
+                if(valid_date && validate_gram){
                     const dateArr = this.date.split('-');
                     const year = dateArr[0];
                     const month = dateArr[1];
@@ -73,8 +84,57 @@ export default {
                     localStorage.setItem("date",`${year} - ${month} - ${day}`);
                     localStorage.setItem("gram", this.gram);
                     const info = {"gram": this.gram, "date": this.date }
-                    console.log(info)
-                }  
+                    return info;
+                }else{
+                    e.preventDefault();
+                }
+            },
+
+            checkGramValidity(){
+                if(this.gram < 1000){
+                    return false;
+                }else{
+                    return true;
+                }
+            },
+
+            checkValidDate(){
+                const d = new Date();
+                const day = d.getDate();
+                const month = d.getMonth() + 1;
+                const year = d.getFullYear();
+                if(this.date!=null){
+                    const dateArr = this.date.split('-');
+                    const selected_year = Number(dateArr[0]);
+                    const selected_month = Number(dateArr[1]);
+                    const selected_day = Number(dateArr[2]);
+                    if(selected_year > year){
+                        return true;
+                    }
+                    else if(selected_year === year){
+                        if(selected_month > month){
+                            return true;
+                        }
+                        else if(selected_month == month){
+                            if(selected_day > day){
+                                return true;
+                            }
+                            else{
+                                return false;
+                            }
+                        }
+                        else{
+                            return false;
+                        }
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                else{
+                    return false
+                }
+
             },
                         
         }
@@ -127,7 +187,6 @@ export default {
     margin-top: var(--mg-top);
 }
 .submitBtn{
-    background: var(--green-scale-color);
     color: var(--white-text-color);
     font-weight: var(--font-weight-700);
     padding: 7px;
@@ -146,15 +205,13 @@ input:focus{
     overflow-x: auto;
     white-space: nowrap;
     scrollbar-width: thin;
-    scrollbar-color: var(--green-scale-color) #fff;
 }
 
 *::-webkit-scrollbar-track{
-    background: #fff;
+    background: var(--white-text-color);
 }
 *::-webkit-scrollbar-thumb{
     border-radius: 5px;
-    background: var(--green-scale-color);
 }
 
 .bookCard{
@@ -163,7 +220,7 @@ input:focus{
     box-shadow: 2px 2px 3px rgba(0, 0, 0, .2);
     border-radius: 10px;
     overflow: hidden;
-    margin-left: 1rem;
+    margin: 0 var(--mg-unit);
     border: 1px solid var(--white-scale-8-bg-color);
 }
 

@@ -49,8 +49,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Noto+Sans+TC&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@100&family=Source+Sans+Pro:wght@200;300;400&display=swap');
 /* ------ Variables CSS ------ */
 :root{
   /* ----- Height and Width ----- */
@@ -86,8 +85,8 @@ export default {
  --bonusbox-border-color: #cccfd8;
 
  /* ------ Fonts ----- */
- --body-font-first: 'Inconsolata', monospace;
- --body-font-second: 'Noto Sans TC', sans-serif;
+ --body-font-first: 'IBM Plex Serif', serif;
+ --body-font-second: 'Source Sans Pro', sans-serif;
  --normal-font-size: 1rem;
  --headertext-font-size: 2.5rem;
  --context-font-size: 1.2rem;
@@ -117,11 +116,6 @@ body{
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   position: relative;
   font-family: var(--body-font-first);
   font-family: var(--body-font-second);

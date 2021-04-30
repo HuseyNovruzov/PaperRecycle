@@ -15,8 +15,8 @@
                     <img src="../assets/social-media.svg" alt="">
                 </div>
                 <div class="social-links">
-                    <a href="facebook.com">Facebook</a>
-                    <a href="linkedin.com">LinkedIn</a>
+                    <a href="https://facebook.com">Facebook</a>
+                    <a href="https://linkedin.com">LinkedIn</a>
                 </div>
             </div>
         </div>

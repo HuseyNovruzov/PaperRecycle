@@ -1,11 +1,11 @@
 <template>
   <div class="homePageContainer">
-    <div class="toggleBox" v-if="!toggleMenu" @click="toggleNavbar">
-      <img src="../assets/openmenu.svg" alt="">
+    <div class="toggleBox" @click="toggleNavbar" v-if="!toggleMenu">
+      <img src="../assets/arrow_back.svg" alt="">
     </div>
     <nav class="responsive-navbar" v-show="toggleMenu">
         <div class="closeBtn-box" @click="toggleNavbar">
-            <img src="../assets/openmenu.svg" alt="">
+            <img src="../assets/close_btn.svg" alt="">
         </div>
         <div class="responsive-logo-box">Logo</div>
         <div class="responsive-button-box">
@@ -19,7 +19,7 @@
     </nav>
     <header class="home-header">
       <div class="logo-box">
-       <img src="../assets/logo.svg" alt="">
+      
       </div>
       <div class="button-box">
         <router-link to="/login">
@@ -112,20 +112,21 @@ export default {
 }
 
 /* Toggle */
-.toggleBox{
+.toggleBox, .closeBtn-box{
   position: fixed;
   right: 5px;
   top: 5px;
   background: var(--header-color);
-  box-shadow: 0 0 3px var(--gray-scale-color);
-  width: 35px;
-  height: 35px;
-  display: none;
+  width: 40px;
+  height: 40px;
   justify-content: center;
   align-items: center;
   border-radius: 12px 8px 12px 8px;
   cursor: pointer;
+  display: none;
+  box-shadow: 0 0 3px var(--gray-scale-color);
 }
+
 /* ----- Responsive navbar ----- */
 .responsive-navbar{
   position: fixed;
@@ -137,19 +138,6 @@ export default {
   align-items: center;
   justify-content: center;
   background: var(--black-text-color);
-}
-.closeBtn-box{
-  position: fixed;
-  top: 5px;
-  right: 5px;
-  width: 35px;
-  height: 35px;
-  background: var(--header-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px 8px 12px 8px;
-  cursor: pointer;
 }
 .responsive-logo-box{
   margin-top: calc(var(--mg-unit) + 1rem);
@@ -169,9 +157,10 @@ export default {
   margin-left: var(--mg-unit);
 }
 .responsive-loginBtn, .responsive-registerBtn{
-  color: var(--blue-scale-color);
+  color: var(--white-text-color);
+  font-weight: var(--font-weight-700);
   background: transparent;
-  border: 1px solid var(--white-text-color);
+  border: 1px solid var(--white-scale-9-border-color);
 }
 .responsive-registerBtn:hover, .responsive-loginBtn:hover{
   background: var(--blue-scale-color);
@@ -354,7 +343,7 @@ export default {
   .home-header{
     display: none;
   }
-  .toggleBox{
+  .toggleBox, .closeBtn-box{
     display: flex;
   }
   .headerText{
