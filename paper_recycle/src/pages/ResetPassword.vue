@@ -45,18 +45,18 @@ export default {
     padding: 10px;
     display: flex;
     flex-direction: column;
-    background: var(--white-scale-8-bg-color);
+    background: var(--bg-smokewhite-color);
     border-radius: 5px;
-    border: 1px solid var(--white-scale-9-border-color);
+    border: 1px solid var(--bd-white-color);
 }
 .resetLabel{
-    font-size: var(--label-font-size);
+    font-size: var(--font-size-0-9);
     line-height: 1.6;
 }
 .resetInput{
     border-radius: 5px;
     padding: 5px;
-    border: 1px solid var(--white-scale-9-border-color);
+    border: 1px solid var(--bd-white-color);
     outline: none;
     margin-top: var(--mg-top);
 }

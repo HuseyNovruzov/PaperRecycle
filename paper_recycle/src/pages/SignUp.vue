@@ -178,7 +178,7 @@ export default {
 }
 .warningText{
     margin-top: .6rem;
-    font-size: var(--warningtext-font-size);
+    font-size: var(--font-size-0-8);
 }
 .redText{
     color: var(--red-scale-color);

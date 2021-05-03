@@ -7,7 +7,6 @@
 
 <script>
 
-
 export default {
     name: '',
     props: ["context", "link", "route"],
@@ -18,10 +17,10 @@ export default {
 
 .createAccount{
     margin-top: var(--mg-top);
-    border: 1px solid var(--white-scale-9-border-color);
+    border: 1px solid var(--bd-white-color);
     border-radius: 5px;
     text-align: center;
-    font-size: var(--label-font-size);
+    font-size: var(--normal-font-size);
 }
 .createAccount a{
     color: var(--blue-scale-color);

@@ -72,9 +72,8 @@ export default {
 
 .notification{
     width: 550px;
-    /* border: 1px solid var(--white-scale-9-border-color); */
-    background: var(--header-color);
-    box-shadow: 1px 1px 4px rgba(0,0,0,.5);
+    background: var(--bg-white-color);
+    box-shadow: 1px 1px 4px var(--bg-black-color);
     margin-top: var(--mg-top);
     border-radius: 5px;
     padding: 5px 10px;
@@ -84,7 +83,7 @@ export default {
 }
 
 .messagecontext{
-    font-size: var(--label-font-size);
+    font-size: var(--font-size-0-9);
     margin-top: var(--mg-top);
 } 
 .removeBox{

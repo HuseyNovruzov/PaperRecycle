@@ -45,13 +45,8 @@ export default {
 }
 </script>
 <style scoped>
-
 .repairPassword a{
     color: var(--blue-scale-color);
-    font-size: var(--label-font-size);
-}
-:disabled{
-    cursor: not-allowed;
-    filter: brightness(60%);
+    font-size: var(--font-size-0-9);
 }
 </style>

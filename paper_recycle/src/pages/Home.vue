@@ -7,40 +7,28 @@
         <div class="closeBtn-box" @click="toggleNavbar">
             <img src="../assets/close_btn.svg" alt="">
         </div>
-        <div class="responsive-logo-box">Logo</div>
-        <div class="responsive-button-box">
-          <router-link to="/login">
-            <input type="button" value="Daxil ol" class="responsive-loginBtn" @click="hideNavbar"/>
-          </router-link>
-          <router-link to="/register">
-            <input type="button" value="Qeydiyyat" class="responsive-registerBtn" @click="hideNavbar"/>
-          </router-link>
-        </div>
     </nav>
-    <header class="home-header">
-      <div class="logo-box">
-      
-      </div>
-      <div class="button-box">
-        <router-link to="/login">
-          <input type="button" value="Daxil ol" class="loginBtn" />
-        </router-link>
-        <router-link to="/register">
-          <input type="button" value="Qeydiyyat" class="registerBtn" />
-        </router-link>
-      </div>
-    </header>
     <section class="middle">
-      <section class="textSection">
-        <div class="headerText">
-          <h1>Daha yaxşı təbiət üçün!</h1>
+      <section class="introduction">
+        <div class="introBox">
+            <div class="headerText">
+              <h1>Daha Yaxşı təbiət üçün!</h1>
+            </div>
+            <div class="context">
+              <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Eos repudiandae quod similique molestiae</span>
+            </div>
+            <div class="button-box">
+              <router-link to="/login">
+                <input type="button" value="Daxil ol" class="loginBtn" />
+              </router-link>
+              <router-link to="/register">
+                <input type="button" value="Qeydiyyat" class="registerBtn" />
+              </router-link>
+            </div>
         </div>
         <div class="headerImg">
-          <img src="../assets/street.svg" alt="">
-        </div>
-        <div class="context">
-
-          <p>Kağızların təkrar emalı bir neçə ağacı xilas edir</p>
+          <img src="../assets/background.svg" alt="">
         </div>
       </section>
       <section class="informBox">
@@ -77,7 +65,6 @@
   </div>
 </template>
 <script>
-
 export default {
   data(){
     return{
@@ -116,7 +103,7 @@ export default {
   position: fixed;
   right: 5px;
   top: 5px;
-  background: var(--header-color);
+  background: var(--bg-white-color);
   width: 40px;
   height: 40px;
   justify-content: center;
@@ -137,111 +124,87 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--black-text-color);
+  background: var(--bg-black-color);
 }
-.responsive-logo-box{
-  margin-top: calc(var(--mg-unit) + 1rem);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.responsive-button-box{
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  margin-top: calc(var(--mg-unit) + 2rem);
-}
-.responsive-registerBtn{
-  margin-left: var(--mg-unit);
-}
-.responsive-loginBtn, .responsive-registerBtn{
-  color: var(--white-text-color);
-  font-weight: var(--font-weight-700);
-  background: transparent;
-  border: 1px solid var(--white-scale-9-border-color);
-}
-.responsive-registerBtn:hover, .responsive-loginBtn:hover{
-  background: var(--blue-scale-color);
-  color: var(--white-text-color);
-}
+
 .bd-block{
   overflow: hidden;
 }
-/* ----- Header ----- */
-.home-header{
-  position: sticky;
-  top: 0;
-  background: var(--header-color);
-  box-shadow: 0 0 3px var(--gray-scale-color) ;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: .4rem 1rem;
-}
-.logo-box{
-  width: 200px;
-}
-.logo-box img{
+
+/* ---- First section ----- */
+
+.introduction{
   width: 100%;
-  height: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  min-height: var(--home-introduction-height);
+  text-align: justify;
+  background-image: linear-gradient(90deg,var(--bg-white-color), var(--bg-smooth-color));
+  padding: 0 1rem;
+  margin-bottom: var(--mg-bottom);
+}
+
+.introBox{
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+.headerText{
+  font-size: var(--font-size-2);
+  color: var(--strong-blue-color);
+  display: flex;
+  order: 1;
+}
+.context{
+  display: flex;
+  order: 2;
+  font-size: var(--normal-font-size);
+  color: var(--black-text-color);
+  margin-bottom: var(--mg-unit);
 }
 .button-box{
-  width: 170px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  order: 3;
+  align-items: center;
+  justify-content: space-around;
 }
 .button-box input[type=button], .responsive-button-box input[type=button]{  
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
   outline: none;
+  width: var(--home-btn-width);
+  transition: .4s;
 }
 .loginBtn{
-  border: 1px solid var(--green-scale-color);
-  color: var(--green-scale-color);
-  background: transparent;
+  border: none;
+  color: var(--white-text-color);
+  background: var(--blue-scale-color);
 }
 .registerBtn{
-  border: 1px solid var(--green-scale-color);
-  color: var(--white-text-color);
-  background: var(--green-scale-color);
+  border: none;
+  color: var(--strong-blue-color);
+  background: var(--bg-gray-color);
 }
 .loginBtn:hover{
-  background: var(--green-scale-color);
-  color: var(--white-text-color);
+  color: var(--strong-blue-color);
+  background: var(--bg-gray-color);
 }
 .registerBtn:hover{
-  background: var(--green-strong-scale-color);
+  color: var(--white-text-color);
+  background: var(--blue-scale-color);
 }
-/* ---- First section ----- */
-.middle{
-  margin-top: var(--mg-top);
+.headerImg{
+  height: 30em;
+  width: 420px;
 }
-.textSection{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: var(--home-textsection-height);
-  text-align: center;
-}
-
-.headerText{
-  font-size: var(--headertext-font-size);
-  color: var(--black-text-color);
-}
-
 .headerImg img{
   width: 100%;
+  height: 100%;
 }
-.context{
-  font-size: var(--context-font-size);
-  color: var(--black-text-color);
-}
-
 
 /* ------ Second Section ------ */
 .informBox{
@@ -260,7 +223,6 @@ export default {
 }
 /* ------ Cards Section ------ */
 .cards{
-  margin-top: 6em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -286,7 +248,7 @@ export default {
 .textBox h2{
   margin-bottom: var(--mg-bottom);
   font-weight: var(--font-weight-700);
-  font-size: var(--context-font-size);
+  font-size: var(--font-size-1-2);
   color: var(--blue-scale-color);
 }
 .textBox p{
@@ -311,10 +273,11 @@ export default {
 }
 .cardImageBox img{
   width: 85%;
+  height: inherit;
 }
 .card2{
   order: 2;
-  margin-top: 5em;
+  margin-top: calc(var(--mg-unit) *5);
 }
 .card2 > .textBox{
   order: 2;
@@ -384,10 +347,6 @@ export default {
   }
   .card2> .cardImageBox{
     order: 2;
-  }
-  
-  .textSection{
-    margin-top: calc(var(--mg-unit) * 4);
   }
 }
 

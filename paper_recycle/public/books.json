@@ -1,0 +1,34 @@
+{
+    "books": [
+        {
+            "name": "Daniel Goleman",
+            "book_name": "Parks",
+            "bonus": 40,
+            "url": "https://s3.amazonaws.com/standardsmanualimages/parks/product/standards_manual_parks_book3218-400.jpg"
+        },
+        {
+            "name": "Mark Levi",
+            "book_name": "Gentle living",
+            "bonus": 42,
+            "url": "https://www.jodipicoult.com/images/covers/The-Book-of-Two-Ways-NA-hc-400.jpg"
+        },
+        {
+            "name": "Agatha Christie",
+            "book_name": "The ideal city",
+            "bonus": 34,
+            "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKmt31c5xC3mnv1IBNqI4pqgopZ4l9KKDkDQ&usqp=CAU"
+        },
+        {
+            "name": "Arthur Conan Doyle",
+            "book_name": "Heat Moon",
+            "bonus": 50,
+            "url": "https://media.cntraveler.com/photos/5faaa328d25898d767b91053/master/w_1600%2Cc_limit/GreatestTravelBooksAllTime-2020-Blue-Highways.jpg"
+        },
+        {
+            "name": "Mark Levi",
+            "book_name": "Exchange mind",
+            "bonus": 42,
+            "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8rI_tn3BpM-qwJC7iEu1ntsQtAN4ZDteE4g&usqp=CAU"
+        }
+    ]
+}

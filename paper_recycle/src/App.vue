@@ -53,15 +53,15 @@ export default {
 /* ------ Variables CSS ------ */
 :root{
   /* ----- Height and Width ----- */
-  --header-height: 2rem;
-  --nav-width: 68px;
+
   /* ------ Home Page ------ */
-  --home-textsection-height: 570px;
-  --home-loginbtn-width: 100px;
+  --home-introduction-height: 570px;
+  --home-btn-width: 90px;
   --home-textbox-width: 450px;
   --home-textbox-height: 22em;
   --home-imagebox-width: 450px;
   --home-imagebox-height: 22em;
+  --logo-box-width: 200px;
   /* ----- Register page ----- */
   --loginbox-width: 400px;
   --usercontainer-height: 100vh;
@@ -70,32 +70,39 @@ export default {
   --bookcard-width: 275px;
   --descriptionbox-width: 160px;
  /* ------ Colors ------ */
+  --bg-black-color: #000000;
+  --bg-white-color: #ffffff;
+  --bg-smokewhite-color: #f6f8fa;
+  --bg-smooth-color: rgb(194, 240, 232);
+  --bg-gray-color: rgb(223, 219, 219);
+  --bg-yellow-color: #ffda18;
+  --bd-white-color: #e1e4e8;
+  --bd-yellow-color: #ffda18;
 
- --header-color: #ffffff;
+ --strong-blue-color: rgb(3, 22, 73);
  --blue-scale-color: #1648f9;
  --white-text-color: #faf9fc;
  --black-text-color: #212529;
+ --yellow-text-color: #ffda18;
+ --gray-text-color: rgb(126, 119, 119);
  --green-scale-color: rgb(24, 212, 118);
  --green-strong-scale-color: rgb(29, 173, 108);
  --red-scale-color: rgb(223, 61, 61);
  --gray-scale-color: rgb(210,210,210);
- --disable-button-color: #999;
- --white-scale-8-bg-color: #f6f8fa;
- --white-scale-9-border-color: #e1e4e8;
+
+ --disable-button-color: rgb(153, 151, 151);
  --bonusbox-border-color: #cccfd8;
 
  /* ------ Fonts ----- */
  --body-font-first: 'IBM Plex Serif', serif;
  --body-font-second: 'Source Sans Pro', sans-serif;
  --normal-font-size: 1rem;
- --headertext-font-size: 2.5rem;
- --context-font-size: 1.2rem;
- --label-font-size: .9rem;
- --warningtext-font-size: .8rem;
- --bookname-font-size: .8rem;
+ --font-size-2: 2rem;
+ --font-size-1-2: 1.2rem;
+ --font-size-0-9: .9rem;
+ --font-size-0-8: .8rem;
  --font-weight-700: 700;
  --font-weight-400: 400;  
- --header-font-size: 24px;
  
 
  /* ------ z-index ----- */
@@ -174,24 +181,24 @@ a{
     padding: 10px;
     display: flex;
     flex-direction: column;
-    background: var(--white-scale-8-bg-color);
+    background: var(--bg-smokewhite-color);
     border-radius: 5px;
-    border: 1px solid var(--white-scale-9-border-color);
+    border: 1px solid var(--bd-white-color);
 }
 .inp{
     border-radius: 5px;
     padding: 5px;
-    border: 1px solid var(--white-scale-9-border-color);
+    border: 1px solid var(--bd-white-color);
     outline: none;
     margin-top: var(--mg-top);
     position: relative;
 }
 .textLabel{
     margin-left: 3px;
-    font-size: var(--label-font-size);
+    font-size: var(--normal-font-size);
 }
 .inputBox{
-    margin-top: 1rem;
+    margin-top: var(--mg-top);
     display: flex;
     flex-direction: column;
 }
@@ -214,8 +221,8 @@ input:focus:not(.success){
 }
 .conditions{
     font-size: .7rem;
-    margin-top: .5rem;
-    margin-left: .5rem;
+    margin-top: calc(var(--mg-top) /2);
+    margin-left: calc(var(--mg-unit) /2);
 }
 .success{
     border: 1px solid var(--green-scale-color);

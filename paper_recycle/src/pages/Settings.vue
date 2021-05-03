@@ -12,7 +12,7 @@
                     <span class="conditions" :class="new_passwordContainUpper ? 'success-text': ''">Ən az bir böyük hərf olmalıdır</span>
                     <span class="conditions" :class="new_passwordContainDigit ? 'success-text': ''">Ən az bir rəqəm olmalıdır</span>
                     <span class="conditions" :class="new_passwordLength ? 'success-text': ''">Şifrə uzunluğu 8 və ya daha artıq olmalıdır</span>
-                    <input type="submit" value="Deyis" class="submitBtn" :class="disableChangePasswordButton ? 'submitBtnProp': 'disable'" :disabled="disableChangePasswordButton ? false : true" />
+                    <input type="submit" value="Dəyiş" class="submitBtn" :class="disableChangePasswordButton ? 'submitBtnProp': 'disable'" :disabled="disableChangePasswordButton ? false : true" />
                 </form> 
  
         </section>
@@ -164,11 +164,11 @@ export default {
     margin-bottom: var(--mg-bottom);
 }
 .generalBorder{
-     border: 1px solid var(--white-scale-9-border-color);
+     border: 1px solid var(--bd-white-color);
 }
 .resetPasswordContainer, .locationContainer{
-    border: 1px solid var(--white-scale-9-border-color);
-    background: var(--white-scale-8-bg-color);
+    border: 1px solid var(--bd-white-color);
+    background: var(--bg-smokewhite-color);
     display: flex;
     flex-direction: column;
     width: 700px;
@@ -182,7 +182,7 @@ export default {
     width: 90%;
 }
 .resetPasswordForm label, .locationForm label{
-    font-size: var(--label-font-size);
+    font-size: var(--font-size-0-9);
     color: var(--black-text-color);
     margin-top: var(--mg-top);
 }
@@ -196,7 +196,7 @@ export default {
     width: 200px;
 }
 .warningText{
-    font-size: var(--warningtext-font-size);
+    font-size: var(--font-size-0-8);
 }
 .redText{
     color: var(--red-scale-color);

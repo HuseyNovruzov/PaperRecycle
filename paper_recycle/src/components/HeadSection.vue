@@ -161,7 +161,7 @@ export default {
   position: fixed;
   top: 5px;
   right: 5px;
-  background: var(--header-color);
+  background: var(--bg-white-color);
   box-shadow: 0 0 3px var(--gray-scale-color);
   width: 40px;
   height: 40px;

@@ -49,15 +49,16 @@ export default {
 }
 .contact h2, .support h2, .social h2{
     color: var(--white-text-color);
-    font-size: var(--context-font-size);
+    font-size: var(--font-size-1-2);
     font-weight: normal;
 }
 .contact p, .support p{
-    color: rgb(105, 103, 103);
-    font-size: calc(var(--label-font-size) - 0.1rem);
+    color: var(--gray-text-color);
+    font-size: var(--font-size-0-9)
 }
 .social-image img{
     width: 100%;
+    height: inherit;
 }
 
 .social-links{
@@ -71,7 +72,7 @@ export default {
     color: var(--blue-scale-color);
 }
 .social-links a:hover{
-    border-color: var(--white-scale-9-border-color);
+    border-color: var(--bd-white-color);
     background: var(--blue-scale-color);
     color: var(--white-text-color);
 }
@@ -83,12 +84,12 @@ export default {
     align-items: center;
 }
 .footer-line div{
-    border-bottom: 1px solid var(--white-scale-9-border-color);
+    border-bottom: 1px solid var(--bd-white-color);
     width: 90%;
 }
 .footer-line p{
     color: var(--white-text-color);
-    font-size: var(--label-font-size);
+    font-size: var(--font-size-1-2);
 }
 
 @media only screen and (max-width: 320px){
@@ -103,7 +104,7 @@ export default {
         margin-top: var(--mg-top);
     }
     .footer-line p{
-        font-size: var(--label-font-size);
+        font-size: var(--font-size-0-9);
     }
 }
 </style>
