@@ -19,7 +19,7 @@
                 </form>
             </div>
             <div class="bonusesBox activeBonus">
-                <div class="emptyBox" v-if="!infos.length">Aktiv bonus yoxdur</div>
+                <div class="empty" v-if="!infos.length">Aktiv bonus yoxdur</div>
                 <div class="bonusHeader" v-if="infos.length">
                     <span class="active">Aktiv bonus {{ bonus }}</span>
                 </div>
@@ -28,7 +28,7 @@
                         <span class="circle bg-green"></span>
                         <div class="historyDetail">
                             <span>{{ info.waiting }}</span>
-                            <span>{{ info.gram }}</span>
+                            <span>{{ info.gram }} kq</span>
                             <span>{{ info.date }}</span>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
             </div>
 
             <div class="bonusesBox waitingBonus">
-                <div class="emptyBox" v-if="!infos.length">Gözləyən bonus yoxdur</div>
+                <div class="empty" v-if="!infos.length">Gözləyən bonus yoxdur</div>
                 <div class="bonusHeader" v-if="infos.length">
                     <span class="waiting">Gözləyən bonus {{ waiting_bonus }}</span>
                 </div>
@@ -219,19 +219,28 @@ export default {
 }
 
 .bonusBox{
-    border-bottom: 1px solid var(--gray-scale-color);
-    padding: 1rem 0;
-    margin-top: var(--mg-top);
+    margin: var(--mg-top) var(--mg-unit) 0 0;
     overflow-x: auto;
     white-space: nowrap;
     display: grid;
     grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    
 }
 
 .bonusesBox{
     width: var(--bonusform-width);
     border-radius: 5px;
     margin: 0 var(--mg-unit);
+}
+.empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 50%;
+    transform: translate(0%,-50%);
+    color: var(--gray-scale-color);
 }
 .addBonus{
     padding: 10px;
